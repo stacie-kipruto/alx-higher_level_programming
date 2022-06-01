@@ -7,8 +7,8 @@ a = l[len(l) - 1]
 b = int(a)
 
 if b > 5:
-  print("last digit of {} is {} and is greater than 5".format(number, b))
+  print("Last digit of {} is {} and is greater than 5".format(number, b))
 elif b < 6 and b > 0:
-  print("last digit of {} is {} and is less than 6 and greater than 0".format(number, b))
+  print("Last digit of {} is {} and is less than 6 and greater than 0".format(number, b))
 elif b == 0:
-  print("last digit of {} is {} and is 0".format(number, b))
+  print("Last digit of {} is {} and is 0".format(number, b))
