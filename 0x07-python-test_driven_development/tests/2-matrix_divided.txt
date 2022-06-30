@@ -1,0 +1,115 @@
+# 2-matrix_divided.txt
+
+
+==========================================================================
+doctest to test 2-matrix_divided.py
+==========================================================================
+
+Lists of lists (with integers and floats) and a valid dividor
+==========================================================================
+
+    >>> divide = __import__('2-matrix_divided').matrix_divided
+    >>> matrix = [[1, 2.4, 3], [4, 5.6, 6.8], [7.2, 8, 9]]
+    >>> divide(matrix, 4)
+    [[0.25, 0.6, 0.75], [1.0, 1.4, 1.7], [1.8, 2.0, 2.25]]
+    >>> divide(matrix, 6)
+    [[0.17, 0.4, 0.5], [0.67, 0.93, 1.13], [1.2, 1.33, 1.5]]
+
+A non-list argument, a null list and empty List
+==========================================================================
+
+        >>> matrix = ((1, 2, 3), (4, 5, 6))
+        >>> divide(matrix, 6)
+        Traceback (most recent call last):
+                ...
+        TypeError: matrix must be a matrix (list of lists) of integers/floats
+        >>> matrix = 'hello'
+        >>> divide(matrix, 6)
+        Traceback (most recent call last):
+                ...
+        TypeError: matrix must be a matrix (list of lists) of integers/floats
+        >>> matrix = None
+        >>> divide(matrix, 6)
+        Traceback (most recent call last):
+                ...
+        TypeError: matrix must be a matrix (list of lists) of integers/floats
+        >>> matrix = []
+        >>> divide(matrix, 6)
+        Traceback (most recent call last):
+                ...
+        TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+Checking for list of lists
+==========================================================================
+
+        >>> matrix = [1, 2, 3, 4.5, 8, 82.79, 23]
+        >>> divide(matrix, 6)
+        Traceback (most recent call last):
+                ...
+        TypeError: matrix must be a matrix (list of lists) of integers/floats
+        >>> matrix = [[1, 2, 3], (4, 5, 6)]
+        >>> divide(matrix, 6)
+        Traceback (most recent call last):
+                ...
+        TypeError: matrix must be a matrix (list of lists) of integers/floats
+        >>> matrix = [[]]
+        >>> divide(matrix, 6)
+        [[]]
+        >>> matrix = [[], []]
+        >>> divide(matrix, 6)
+        [[], []]
+        >>> matrix = [[],[],[]]
+        >>> divide(matrix, 6)
+        [[], [], []]
+
+
+Checking for equality of length of lists
+==========================================================================
+
+        >>> matrix = [[], [1, 2], [3, 4]]
+        >>> divide(matrix, 6)
+        Traceback (most recent call last):
+                ...
+        TypeError: Each row of the matrix must have the same size
+        >>> matrix = [[1, 2, 3], [4.2, 5.4, 9], [10, 12.2, 14, 16]]
+        >>> divide(matrix, 6)
+        Traceback (most recent call last):
+                ...
+        TypeError: Each row of the matrix must have the same size
+
+Non-integer or not-float values for the dividor
+==========================================================================
+
+        >>> matrix = [[2, 0.6, 4, 8], [8.3, 25.6, 9, 10], [12.2, 92.3, 23, 100]]
+        >>> divide(matrix, 'c')
+        Traceback (most recent call last):
+                ...
+        TypeError: div must be a number
+        >>> divide(matrix, [1, 2, 3])
+        Traceback (most recent call last):
+                ...
+        TypeError: div must be a number
+        >>> divide(matrix, {})
+        Traceback (most recent call last):
+                ...
+        TypeError: div must be a number
+        >>> divide(matrix, 'hello')
+        Traceback (most recent call last):
+                ...
+        TypeError: div must be a number
+            
+Division by 0
+==========================================================================
+
+        >>> divide(matrix, 0)
+        Traceback (most recent call last):
+                ...
+        ZeroDivisionError: division by zero
+
+No argument
+==========================================================================
+
+        >>> divide()
+        Traceback (most recent call last):
+                ...
+        TypeError: matrix_divided() missing 2 required positional arguments: 'matrix' and 'div'
