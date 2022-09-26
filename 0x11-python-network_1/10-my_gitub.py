@@ -1,18 +1,16 @@
 #!/usr/bin/python3
-"""Python script that takes your GitHub credentials
-(username and password) and uses the GitHub API to display your id
 """
-if __name__ == "__main__":
-    import requests
-    import sys
+Takes your Github credentials and uses the GitHub API
+to dispaly your ID.
+"""
 
-    url = "https://api.github.com/user"
-    user = sys.argv[1]
-    passwd = sys.argv[2]
-    data_res = requests.get(url, auth=(user, passwd))
+import requests
+from sys import argv
 
+if __name__ == '__main__':
+    url = 'https://api.github.com/user'
+    response = requests.get(url, auth=(argv[1], argv[2]))
     try:
-        data_json = data_res.json()
-        print(data_json["id"])
-    except Exception:
-        print("None")
+        print(response.json().get("id"))
+    except ValueError:
+        print("Not a valid JSON")
